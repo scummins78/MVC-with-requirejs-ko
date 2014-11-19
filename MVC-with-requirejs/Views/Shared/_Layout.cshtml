@@ -1,0 +1,35 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Testing requirejs with mvc</title>
+    </head>
+    <body>
+        <div id="navigation">
+            <ul>
+                <li><a href="@Url.Action("Page1", "Main")">Page 1</a></li>
+                <li><a href="@Url.Action("Page2", "Main")">Page 2</a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <h1>Main Layout</h1>
+        </div>
+        
+        <div>
+            @RenderBody()
+        </div>
+        @Scripts.Render("~/bundles/require")
+        <script type="text/javascript">
+            require.config({
+                waitSeconds: 15,
+                paths: {
+                    "ko": '@Scripts.Url("~/bundles/lib")',
+                    "domReady": '@Scripts.Url("~/bundles/domReady")',
+                    "common": '@Scripts.Url("~/bundles/common")'
+                }
+            });
+        </script>
+        @RenderSection("scripts", required:false)
+    </body>
+</html>
