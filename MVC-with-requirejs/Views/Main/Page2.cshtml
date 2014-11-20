@@ -3,3 +3,14 @@
 }
 
 <h2>Page2</h2>
+<div id="page2">
+    
+    @Html.Partial("_PartialTwo")
+    @Html.Partial("_PartialThree")
+
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/viewmodels")
+}

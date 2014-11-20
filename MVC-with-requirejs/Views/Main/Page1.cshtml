@@ -6,24 +6,15 @@
 
 <h2>Page1</h2>
 <div id="page1">
-    <div>
-        <span>Here is some text to display</span>
-        <br/>
-        <span data-bind="text: displayMessage"></span>
-        <button data-bind="click: updateMessage">Update the Text!</button>
-    </div>
-    <div>
-        <span>Here are some items to display</span>
-        <br/>
-        <ul data-bind="foreach: list">
-            <li data-bind="text: $data"></li>
-        </ul>
-
-        <button data-bind="click: addItem">Add an Item!</button>
-    </div>
     
+    @Html.Partial("_PartialTwo")
+    @Html.Partial("_PartialOne")
+
 </div>
 
-@section scripts {
-    @Html.InitModule("Scripts/App/PageOneViewModel", "page1", new[]{"common"})
+@section scripts
+{
+    @Scripts.Render("~/bundles/viewmodels")
 }
+
+

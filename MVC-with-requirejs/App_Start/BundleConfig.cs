@@ -19,6 +19,12 @@ namespace MVC_with_requirejs
 
             bundles.Add(new ScriptBundle("~/bundles/common").Include(
                 "~/Scripts/App/Services/*.js"));
+
+            // empty bundle for view model scripts.  We will add to this
+            // bundle in each partial when needed
+            bundles.Add(new ScriptBundle("~/bundles/viewmodels"));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

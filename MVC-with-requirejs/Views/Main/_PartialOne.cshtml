@@ -1,0 +1,19 @@
+﻿@using CustomHtmlHelpers
+@using Forloop.HtmlHelpers
+
+<div id="Partial1">
+    <span>Here is some text to display</span>
+    <br/>
+    <span data-bind="text: displayMessage"></span>
+    <button data-bind="click: updateMessage">Update the Text!</button>
+</div>
+
+@{
+    var bundle = BundleTable.Bundles.GetBundleFor("~/bundles/viewmodels");
+    bundle.Include("~/Scripts/App/PartialOneViewModel.js");
+}
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddInitRequireJSModule("viewmodels/PartialOneViewModel", "Partial1");
+}

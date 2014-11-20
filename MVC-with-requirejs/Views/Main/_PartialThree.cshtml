@@ -1,0 +1,23 @@
+﻿@using CustomHtmlHelpers
+@using Forloop.HtmlHelpers
+<div id="Partial3">
+    <br/>
+    <br/>
+    <span>This is a totally different list</span>
+    <br/>
+    <ol data-bind="foreach: list">
+        <li data-bind="text: $data"></li>
+    </ol>
+
+    <button data-bind="click: addItem">Add some stuff</button>
+</div>
+
+@{
+    var bundle = BundleTable.Bundles.GetBundleFor("~/bundles/viewmodels");
+    bundle.Include("~/Scripts/App/PartialThreeViewModel.js");
+}
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddInitRequireJSModule("viewmodels/PartialThreeViewModel", "Partial3", new[] { "common" });
+}

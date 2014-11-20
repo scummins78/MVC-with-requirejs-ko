@@ -1,0 +1,21 @@
+﻿@using CustomHtmlHelpers
+@using Forloop.HtmlHelpers
+<div id="Partial2">
+    <span>Here are some items to display</span>
+    <br/>
+    <ul data-bind="foreach: list">
+        <li data-bind="text: $data"></li>
+    </ul>
+
+    <button data-bind="click: addItem">Add an Item!</button>
+</div>
+
+@{
+    var bundle = BundleTable.Bundles.GetBundleFor("~/bundles/viewmodels");
+    bundle.Include("~/Scripts/App/PartialTwoViewModel.js");
+}
+
+@using (Html.BeginScriptContext())
+{
+    Html.AddInitRequireJSModule("viewmodels/PartialTwoViewModel", "Partial2", new[] { "common" });
+}
